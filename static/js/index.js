@@ -1,21 +1,32 @@
 var React = require('react');
 var C = require('style/colors');
+var G = require('util/grid');
 
 var ChooChooDash = React.createClass({
   render: function() {
     var style = {
-      height: "100%",
-      backgroundColor: C.BLACK,
+      display: "block",
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
       color: C.WHITE,
-      padding: "20px"
+      backgroundColor: C.BLACK,
     };
 
     return (
-      <div className="dashboard" style={ style }>
-        <center>
+      <G.Grid className="dashboard" style={ style }>
+        <G.Unit fill={1} total={3}>
           <h1>SUP</h1>
-        </center>
-      </div>
+        </G.Unit>
+        <G.Unit fill={1} total={3}>
+          <h1>SUP</h1>
+        </G.Unit>
+        <G.Unit fill={1} total={3}>
+          <h1>SUP</h1>
+        </G.Unit>
+      </G.Grid>
     );
   }
 });
