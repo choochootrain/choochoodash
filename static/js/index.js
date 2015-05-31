@@ -18,17 +18,21 @@ var ChooChooDash = React.createClass({
     };
 
     return (
-      <G.Grid className="dashboard" style={ style }>
-        <G.Unit fill={1} total={3}>
-          <time.TimeWidget/>
-        </G.Unit>
-        <G.Unit fill={1} total={3}>
-          <h1>SUP</h1>
-        </G.Unit>
-        <G.Unit fill={1} total={3}>
-          <h1>SUP</h1>
-        </G.Unit>
-      </G.Grid>
+      <G.Container className="dashboard" style={style}>
+        <G.Grid>
+          <G.Unit>
+            <time.TimeWidget/>
+          </G.Unit>
+        </G.Grid>
+        <G.Grid>
+          <G.Unit fill={1} total={2}>
+            <h1>SUP</h1>
+          </G.Unit>
+          <G.Unit fill={1} total={2}>
+            <h1>SUP</h1>
+          </G.Unit>
+        </G.Grid>
+      </G.Container>
     );
   }
 });

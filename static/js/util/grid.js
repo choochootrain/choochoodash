@@ -3,17 +3,39 @@ var _ = require('lodash');
 var classNames = require('classnames');
 var M = require('util/mixins');
 
+var Container = React.createClass({
+  mixins: [ M.ValidatePropsMixin ],
+
+  validateProps: function() {
+    React.Children.forEach(this.props.children, (child) => {
+      if (child.type != Grid) {
+        throw new Error("container children must be grids");
+      }
+    });
+  },
+
+  render: function() {
+    var classes = classNames("g_container", this.props.className);
+
+    return (
+      <div className={classes} style={this.props.style}>
+        {this.props.children}
+      </div>
+    );
+  }
+});
+
 var Grid = React.createClass({
   mixins: [ M.ValidatePropsMixin ],
 
   validateProps: function() {
     let gridWidth = 0;
-    for (let unit of this.props.children) {
-      if (unit.type != Unit) {
+    React.Children.forEach(this.props.children, (child) => {
+      if (child.type != Unit) {
         throw new Error("grid children must be units");
       }
-      gridWidth += unit.props.fill / unit.props.total;
-    }
+      gridWidth += child.props.fill / child.props.total;
+    });
 
     if (gridWidth > 1) {
       throw new Error(`grid is too wide: ${gridWidth * 100}%`); 
@@ -70,6 +92,7 @@ var Unit = React.createClass({
 });
 
 module.exports = {
+  Container,
   Grid,
   Unit
 }
