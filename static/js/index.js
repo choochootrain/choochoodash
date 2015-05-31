@@ -2,6 +2,8 @@ var React = require('react');
 var C = require('style/colors');
 var G = require('util/grid');
 
+var time = require('components/time');
+
 var ChooChooDash = React.createClass({
   render: function() {
     var style = {
@@ -18,7 +20,7 @@ var ChooChooDash = React.createClass({
     return (
       <G.Grid className="dashboard" style={ style }>
         <G.Unit fill={1} total={3}>
-          <h1>SUP</h1>
+          <time.TimeWidget/>
         </G.Unit>
         <G.Unit fill={1} total={3}>
           <h1>SUP</h1>
