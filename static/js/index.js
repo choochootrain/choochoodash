@@ -3,6 +3,7 @@ var C = require('style/colors');
 var G = require('util/grid');
 
 var time = require('components/time');
+var weather = require('components/weather');
 
 var ChooChooDash = React.createClass({
   render: function() {
@@ -20,8 +21,14 @@ var ChooChooDash = React.createClass({
     return (
       <G.Container className="dashboard" style={style}>
         <G.Grid>
-          <G.Unit>
+          <G.Unit fill={1} total={3}>
             <time.TimeWidget/>
+          </G.Unit>
+          <G.Unit fill={1} total={3}>
+            <weather.WeatherWidget cityId={5391959}/>
+          </G.Unit>
+          <G.Unit fill={1} total={3}>
+            <weather.WeatherWidget cityId={5327684}/>
           </G.Unit>
         </G.Grid>
         <G.Grid>
