@@ -1,5 +1,6 @@
 var React = require('react');
 var _ = require('lodash');
+var classNames = require('classnames');
 var M = require('util/mixins');
 
 var Grid = React.createClass({
@@ -22,10 +23,10 @@ var Grid = React.createClass({
   },
 
   render: function() {
-    console.log(this.props.className);
-    console.log(this.props.style);
+    var classes = classNames("pure_g", this.props.className);
+
     return (
-      <div className={"pure-g " + this.props.className} style={this.props.style}>
+      <div className={classes} style={this.props.style}>
         {this.props.children}
       </div>
     );
@@ -58,8 +59,10 @@ var Unit = React.createClass({
   },
 
   render: function() {
+    var classes = classNames(`pure-u-${this.props.fill}-${this.props.total} `, this.props.className);
+
     return (
-      <div className={`pure-u-${this.props.fill}-${this.props.total} ` + this.props.className} style={this.props.style}>
+      <div className={classes} style={this.props.style}>
         {this.props.children}
       </div>
     );
